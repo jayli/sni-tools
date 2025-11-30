@@ -13,7 +13,7 @@ chrome://extensions/
 
 打开”开发者模式“开关，源码方式导入插件：
 
-<img width="500" alt="image" src="https://github.com/user-attachments/assets/fe5f606f-1ecb-49ab-b448-52623d802263" />
+<img width="450" alt="image" src="https://github.com/user-attachments/assets/fe5f606f-1ecb-49ab-b448-52623d802263" />
 
 ### 2）搜索可用 IP
 
