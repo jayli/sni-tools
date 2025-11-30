@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "IP List Extractor",
+  "version": "1.0",
+  "description": "提取页面中 ul > li 的文本内容，每项一行，复制到剪贴板",
+  "permissions": ["activeTab"],
+  "action": {
+    "default_title": "Extract UL List"
+  },
+  "content_scripts": [
+    {
+      "matches": ["www.shodan.io/search"],
+      "js": ["content.js"]
+    }
+  ],
+  "icons": {
+    "16": "icon16.png"
+  }
+}
