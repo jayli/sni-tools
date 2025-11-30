@@ -23,4 +23,11 @@ chrome://extensions/
 
 <img width="400" alt="image" src="https://github.com/user-attachments/assets/d1c7ad98-cd64-48b8-b2a9-3641440ea945" />
 
+### 3）命令行脚本测试 IP 连通性
+
+[sni.js](https://github.com/jayli/passwall-any/blob/main/netflix/sni.js)
+
+### 4）直接测试 IP 解锁能力
+
+这里只是测反代服务器，还需要进一步测试 IP 的解锁能力，在 [passwall-any](https://github.com/jayli/passwall-any/blob/main/netflix/) 里用脚`npm run scan`本测，一步到位。
 
