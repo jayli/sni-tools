@@ -75,7 +75,7 @@ chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       // 显示成功结果
       const content = result.data.join('\n');
       resultEl.textContent = content;
-      statusEl.textContent = `✅ 成功提取 ${result.count} 项内容`;
+      statusEl.textContent = `✅ 成功提取 ${result.count} 个 IP`;
       statusEl.className = 'success';
       copyButton.disabled = false;
       checkButton.disabled = false;
