@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      width: 400px;
+      min-height: 300px;
+      padding: 15px;
+      font-family: Arial, sans-serif;
+      line-height: 1.4;
+    }
+    #result {
+      margin-top: 10px;
+      padding: 10px;
+      background: #f5f5f5;
+      border-radius: 4px;
+      max-height: 200px;
+      overflow: auto;
+      white-space: pre-wrap;
+      border: 1px solid #ddd;
+      font-family: monospace;
+      min-height: 100px;
+    }
+    #status {
+      margin-top: 10px;
+      padding: 8px;
+      border-radius: 4px;
+      text-align: center;
+    }
+    .loading {
+      color: #666;
+      font-style: italic;
+    }
+    .success {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+    }
+    .error {
+      background-color: #ffebee;
+      color: #c62828;
+    }
+    button {
+      margin-top: 15px;
+      padding: 8px 16px;
+      background-color: #1976d2;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    button:hover {
+      background-color: #1565c0;
+    }
+    button:disabled {
+      background-color: #bdbdbd;
+      cursor: not-allowed;
+    }
+    #copyButton {
+      display: block;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <h3>提取内容</h3>
+  <div id="status" class="loading">正在提取内容...</div>
+  <div id="result">暂无内容</div>
+  <button id="copyButton" disabled>复制到剪贴板</button>
+  <script src="popup.js"></script>
+</body>
+</html>
