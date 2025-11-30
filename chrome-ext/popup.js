@@ -8,6 +8,8 @@ chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
   const resultEl = document.getElementById('result');
   const copyButton = document.getElementById('copyButton');
   const checkButton = document.getElementById('checkButton');
+  const netflixButton = document.getElementById('netflixButton');
+
 
   // 安全检查：只处理 http/https 页面
   if (!tab.url || !/^https?:/.test(tab.url)) {
@@ -79,6 +81,7 @@ chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       statusEl.className = 'success';
       copyButton.disabled = false;
       checkButton.disabled = false;
+      netflixButton.disabled = false; 
 
       // 为复制按钮添加事件监听器
       copyButton.onclick = () => {
@@ -103,6 +106,12 @@ chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
         const url = `http://yui.cool:7001/sni?ips=${ips}`;
         
         // 在新标签页中打开URL
+        chrome.tabs.create({ url: url });
+      };
+
+      netflixButton.onclick = () => {
+        const ips = extractedData.join(',');
+        const url = `http://yui.cool:7001/nf?ips=${ips}`;
         chrome.tabs.create({ url: url });
       };
     }

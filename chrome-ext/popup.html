@@ -57,7 +57,7 @@
       background-color: #bdbdbd;
       cursor: not-allowed;
     }
-    #copyButton, #checkButton {
+    #copyButton, #checkButton, #netflixButton {
       display: block;
       width: 100%;
       margin-bottom: 8px;
@@ -75,7 +75,9 @@
   <div id="status" class="loading">正在提取内容...</div>
   <div id="result">暂无内容</div>
   <button id="copyButton" disabled>复制到剪贴板</button>
-  <button id="checkButton" disabled>检测可用性</button>
+  <button id="checkButton" disabled>检测反代Server可用性</button>
+  <button id="netflixButton" disabled>测试解锁Netflix</button>
+
   <script src="popup.js"></script>
 </body>
 </html>
