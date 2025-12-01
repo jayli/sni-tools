@@ -99,7 +99,7 @@ chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
 
       // 显示成功结果
       const content = result.data.join('\n');
-      resultEl.textContent = content;
+      resultEl.value = content; // 使用 value 而不是 textContent
       statusEl.textContent = `✅ 成功提取 ${result.count} 个 IP`;
       statusEl.className = 'success';
       copyButton.disabled = false;
@@ -108,7 +108,7 @@ chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
 
       // 为复制按钮添加事件监听器
       copyButton.onclick = () => {
-        navigator.clipboard.writeText(content)
+        navigator.clipboard.writeText(resultEl.value) // 从 textarea 获取内容
           .then(() => {
             const originalText = copyButton.textContent;
             copyButton.textContent = '已复制!';
@@ -124,18 +124,65 @@ chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
 
       // 为检测可用性按钮添加事件监听器
       checkButton.onclick = () => {
-        // 构造URL，将IP列表用逗号连接
-        const ips = extractedData.join(',');
-        const url = `http://yui.cool:7001/sni?ips=${ips}`;
+        // 从 textarea 获取内容并分割成数组
+        const ips = resultEl.value.split(/\r?\n/).filter(ip => ip.trim() !== '').join(',');
         
-        // 在新标签页中打开URL
-        chrome.tabs.create({ url: url });
+        // 创建一个表单并通过 JavaScript 提交以发起 POST 请求
+        const formHtml = `
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <meta charset="utf-8">
+            <title>正在跳转...</title>
+          </head>
+          <body>
+            <p>正在提交请求，请稍候...</p>
+            <form action="http://yui.cool:7001/sni" method="post" id="postForm">
+              <input type="hidden" name="ips" value="${ips.replace(/"/g, '&quot;')}">
+            </form>
+            <script>
+              document.getElementById('postForm').submit();
+            <\/script>
+          </body>
+          </html>
+        `;
+        
+        // 编码为 data URI
+        const dataUri = "data:text/html;charset=utf-8," + encodeURIComponent(formHtml);
+        
+        // 在新标签页中打开
+        chrome.tabs.create({ url: dataUri });
       };
 
       netflixButton.onclick = () => {
-        const ips = extractedData.join(',');
-        const url = `http://yui.cool:7001/nf?ips=${ips}`;
-        chrome.tabs.create({ url: url });
+        // 从 textarea 获取内容并分割成数组
+        const ips = resultEl.value.split(/\r?\n/).filter(ip => ip.trim() !== '').join(',');
+        
+        // 创建一个表单并通过 JavaScript 提交以发起 POST 请求
+        const formHtml = `
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <meta charset="utf-8">
+            <title>正在跳转...</title>
+          </head>
+          <body>
+            <p>正在提交请求，请稍候...</p>
+            <form action="http://yui.cool:7001/nf" method="post" id="postForm">
+              <input type="hidden" name="ips" value="${ips.replace(/"/g, '&quot;')}">
+            </form>
+            <script>
+              document.getElementById('postForm').submit();
+            <\/script>
+          </body>
+          </html>
+        `;
+        
+        // 编码为 data URI
+        const dataUri = "data:text/html;charset=utf-8," + encodeURIComponent(formHtml);
+        
+        // 在新标签页中打开
+        chrome.tabs.create({ url: dataUri });
       };
     }
   );

@@ -17,10 +17,12 @@
       border-radius: 4px;
       max-height: 200px;
       overflow: auto;
-      white-space: pre-wrap;
       border: 1px solid #ddd;
       font-family: monospace;
-      min-height: 100px;
+      min-height: 200px;
+      width: 100%;
+      box-sizing: border-box;
+      resize: vertical;
     }
     #status {
       margin-top: 10px;
@@ -73,7 +75,7 @@
 <body>
   <h3>提取内容</h3>
   <div id="status" class="loading">正在提取内容...</div>
-  <div id="result">暂无内容</div>
+  <textarea id="result">暂无内容</textarea>
   <button id="copyButton" disabled>复制到剪贴板</button>
   <button id="checkButton" disabled>检测反代Server可用性</button>
   <button id="netflixButton" disabled>测试解锁Netflix</button>
