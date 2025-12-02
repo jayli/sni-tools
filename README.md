@@ -30,5 +30,5 @@ chrome://extensions/
 
 ### 4）直接测试 IP 解锁能力
 
-这里只是测反代服务器，还需要进一步测试 IP 的解锁能力，在 [passwall-any](https://github.com/jayli/passwall-any/blob/main/netflix/) 里用`npm run nf_scan`测试，一步到位。
+这里只是测反代服务器，还需要进一步测试 IP 是否干净，在 [passwall-any](https://github.com/jayli/passwall-any/blob/main/netflix/) 里用`npm run nf_scan`测试，一步到位。
 
